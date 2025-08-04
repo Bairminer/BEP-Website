@@ -1,0 +1,152 @@
+<!-- public/about-us.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About Us | Build Electronic Projects</title>
+  <meta name="description" content="Learn about BEP—our mission, contact info, and give us feedback!">
+    <!-- Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Montserrat:wght@600&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet"
+    />
+  <!-- Styles & Script -->
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="nav-inner">
+        <h1 class="logo"><a href="index.html">Build Electronic Projects</a></h1>
+        <p class="tagline">“Keep calm and build on”</p>
+        <nav class="site-nav">
+            <a href="official-projects.html">Official Projects</a>
+            <a href="buy-products.html">Buy Products</a>
+            <a href="about-us.html" class="active">About Us</a>
+        </nav>
+        </div>
+    </header>
+    <div class="page-wrapper">
+  <main class="layout">
+    <aside class="col sidebar">
+      <h2>BEP Visit Counter</h2>
+      <div id="view-count">Loading…</div>
+    </aside>
+
+    <article class="col content">
+      <h2>About Us</h2>
+      <p>
+        We are a small company that you can find information about electronic projects on. We also sell some of the projects. You can contact us at <a href="mailto:beptechinc@gmail.com">beptechinc@gmail.com</a>.
+        You can rate our site by voting or you can fill in a feedback form below which will be sent  to us. The website poll is on the left. <br><br>
+      </p>
+
+      <h2>BEP Feedback Form</h2>
+      <form id="feedback-form" action="/api/feedback" method="POST">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+      
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="poll-answer">How did you hear about us?:</label>
+        <select id="poll-answer">
+            <option value="friend">Friend</option>
+            <option value="tv">TV</option>
+            <option value="radio">Radio</option>
+            <option value="newspaper">Newspaper</option>
+            <option value="ad">Ad</option>
+            <option value="internet">Internet</option>
+            <option value="friend">Friend</option>
+            <option value="tv">TV</option>
+            <option value="other">Other</option>
+          </select>
+
+        <label for="message">Message/Comments:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      
+        <div class="form-actions">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+          </div>
+      </form>
+    </article>
+
+    <aside class="col sidebar">
+      <section class="search-box">
+        <h2>Search My Site</h2>
+        <form id="search-form" action="/search" method="get">
+          <input type="search" name="q" placeholder="Search…" required>
+          <button type="submit">Search</button>
+        </form>
+      </section>
+
+      <section class="tweet-box">
+        <div class="bg-white p-4 rounded shadow-lg text-center">
+          <h2 class="font-heading text-lg mb-2">Tweet About Us!</h2>
+          <a
+            href="https://twitter.com/share?text=I%20love%20the%20website%20Build%20Electronic%20Projects&url=https%3A%2F%2Fbep.bairminer.com"
+            class="tweet-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Tweet</a>
+        </div>
+      </section>
+
+      <section class="site-poll">
+        <h2>BEP Website Poll</h2>
+        <p class="poll-question">Should we add more ads?</p>
+        <div class="poll-controls">
+          <select id="poll-answer">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            <option value="maybe">Maybe</option>
+          </select>
+          <button id="poll-vote">Vote Now</button>
+          <button id="poll-stats">Statistics</button>
+        </div>
+        <div id="poll-results" class="poll-results"></div>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    © Bairminer – △ ☽ α
+  </footer>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+  <script>
+    // Poll logic
+    async function votePoll() {
+      const answer = document.getElementById('poll-answer').value;
+      await fetch('/api/poll/vote', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ answer })
+      });
+      showStats();
+    }
+
+    async function showStats() {
+      const res = await fetch('/api/poll/stats');
+      const data = await res.json();  // { yes: 10, no: 5, maybe: 3 }
+      const container = document.getElementById('poll-results');
+      container.innerHTML = `
+        <ul>
+          <li>Yes: ${data.yes}</li>
+          <li>No: ${data.no}</li>
+          <li>Maybe: ${data.maybe}</li>
+        </ul>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('poll-vote').onclick = votePoll;
+      document.getElementById('poll-stats').onclick = showStats;
+      // Optionally load stats on sidebar load
+      showStats();
+    });
+  </script>
+</body>
+</html>

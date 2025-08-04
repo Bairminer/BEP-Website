@@ -1,0 +1,124 @@
+<!-- public/official-projects.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Official Projects | Build Electronic Projects</title>
+  <meta name="description" content="See our Official Projects—submit your own at the bottom of the page!">
+    <!-- Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Montserrat:wght@600&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet"
+    />
+  <!-- Styles & Script (same as Home) -->
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="nav-inner">
+        <h1 class="logo"><a href="index.html">Build Electronic Projects</a></h1>
+        <p class="tagline">“Keep calm and build on”</p>
+        <nav class="site-nav">
+            <a href="official-projects.html" class="active">Official Projects</a>
+            <a href="buy-products.html">Buy Products</a>
+            <a href="about-us.html">About Us</a>
+        </nav>
+        </div>
+    </header>
+<div class="page-wrapper">
+  <main class="layout">
+    <aside class="col sidebar">
+      <h2>BEP Visit Counter</h2>
+      <div id="view-count">Loading…</div>
+    </aside>
+
+    <article class="col content">
+      <h2>Official Projects</h2>
+      <p>
+        Official Projects (to get your project posted, please fill in a Post-a-Project form at the bottom of the page):
+      </p>
+
+      <section class="project">
+        <h3><br>Mole Be Gone</h3>
+        <p><strong>By</strong> BEP</p>
+        <p><strong>Parts:</strong></p>
+        <ul>
+          <li>1 × 6 V solar panel</li>
+          <li>1 × 6 V buzzer</li>
+          <li>3 in PVC pipe</li>
+          <li>1 yd PVC pipe</li>
+          <li>Superglue</li>
+        </ul>
+        <p>Use this set of instructions and the pictures to help you build it:</p>
+        <img src="images/mole-be-gone-diagram.jpg" alt="Mole Be Gone Diagram" />
+      </section>
+
+      <section class="project">
+        <h3><br>Water Sensor</h3>
+        <p><strong>By</strong> BEP</p>
+        <p>This is a project on how to build a water sensor.</p>
+        <p><strong>You will need:</strong></p>
+        <ul>
+          <li>2 × 1 kΩ resistors</li>
+          <li>1 × 10 kΩ resistor</li>
+          <li>2 × NPN transistors</li>
+          <li>A few wires</li>
+          <li>1 × LED</li>
+          <li>1 × 9 V battery</li>
+        </ul>
+        <p>You can copy how to build it from this picture:</p>
+        <img src="images/water-sensor-diagram.jpg" alt="Water Sensor Diagram" />
+        <p>The end product should light up the LED when it detects water. If not, rebuild it and try again.</p>
+      </section>
+
+      <section class="post-project">
+        <h2><br>Post-a-Project</h2>
+        <form id="project-form" action="/api/projects" method="POST">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="idea">Your Project Idea</label>
+          <textarea id="idea" name="idea" rows="4" required></textarea>
+
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </form>
+        <p><br>We will contact you via email once your project has been reviewed.</p>
+      </section>
+    </article>
+
+    <aside class="col sidebar">
+      <section class="search-box">
+        <h2>Search My Site</h2>
+        <form id="search-form" action="/search" method="get">
+          <input type="search" name="q" placeholder="Search…" required>
+          <button type="submit">Search</button>
+        </form>
+      </section>
+      <section class="tweet-box">
+        <div class="bg-white p-4 rounded shadow-lg text-center">
+          <h2 class="font-heading text-lg mb-2">Tweet About Us!</h2>
+          <a
+            href="https://twitter.com/share?text=I%20love%20the%20website%20Build%20Electronic%20Projects&url=https%3A%2F%2Fbep.bairminer.com"
+            class="tweet-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Tweet</a>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    © Bairminer – △ ☽ α
+  </footer>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+</body>
+</html>

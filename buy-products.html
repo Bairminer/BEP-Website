@@ -1,0 +1,161 @@
+<!-- public/buy-products.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Buy Products | Build Electronic Projects</title>
+  <meta name="description" content="Order our DIY kits or enter our coupon contest!">
+    <!-- Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Montserrat:wght@600&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet"
+    />
+  <!-- Styles & Script -->
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="nav-inner">
+        <h1 class="logo"><a href="index.html">Build Electronic Projects</a></h1>
+        <p class="tagline">“Keep calm and build on”</p>
+        <nav class="site-nav">
+            <a href="official-projects.html">Official Projects</a>
+            <a href="buy-products.html" class="active">Buy Products</a>
+            <a href="about-us.html">About Us</a>
+        </nav>
+        </div>
+    </header>
+<div class="page-wrapper">
+  <main class="layout">
+    <aside class="col sidebar">
+      <h2>BEP Visit Counter</h2>
+      <div id="view-count">Loading…</div>
+    </aside>
+
+    <article class="col content">
+      <h2>Ordering</h2>
+      <p>To order, please fill in a order form (below). Here are the prices: Mole Be Gone: $35, Water Sensor: $10, bracelets: use bracelet order form. We will contact you by phone about orders.<br><br></p>
+
+      <p class="out-of-stock"><strong>Sorry, we are out of stock :-(<br><br></strong></p>
+
+      <section class="order-form">
+        <h3>BEP Order Form</h3>
+        <form id="order-form" action="/api/orders" method="POST">
+          <div class="field-pair">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          <div class="field-pair">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+          <div class="field-pair">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div class="field-pair">
+            <label for="address1">Address Line 1</label>
+            <input type="text" id="address1" name="address1" required>
+          </div>
+          <div class="field-pair">
+            <label for="address2">Address Line 2</label>
+            <input type="text" id="address2" name="address2">
+          </div>
+          <div class="field-pair">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" required>
+          </div>
+          <div class="field-pair">
+            <label for="state">State/Province</label>
+            <input type="text" id="state" name="state" required>
+          </div>
+          <div class="field-pair">
+            <label for="zip">Zip/Postal Code</label>
+            <input type="text" id="zip" name="zip" required>
+          </div>
+          <div class="field-pair">
+            <label for="item1">1. Item Number</label>
+            <input type="text" id="item1" name="item1">
+          </div>
+          <div class="field-pair">
+            <label for="qty1">1. Quantity</label>
+            <input type="number" id="qty1" name="qty1" min="1">
+          </div>
+          <div class="field-pair">
+            <label for="item2">2. Item Number</label>
+            <input type="text" id="item2" name="item2">
+          </div>
+          <div class="field-pair">
+            <label for="qty2">2. Quantity</label>
+            <input type="number" id="qty2" name="qty2" min="1">
+          </div>
+          <div class="field-pair full-width">
+            <label for="delivery">Delivery Instructions</label>
+            <textarea id="delivery" name="delivery" rows="3"></textarea>
+          </div>
+          <div class="field-pair full-width">
+            <label for="comments">Other Comments</label>
+            <textarea id="comments" name="comments" rows="3"></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="coupon-contest">
+        <h3><br>BEP Coupon Contest</h3>
+        <form id="contest-form" action="/api/coupons" method="POST">
+          <div class="field-pair full-width">
+            <label for="fullName">First and Last Name</label>
+            <input type="text" id="fullName" name="fullName" required>
+          </div>
+          <div class="field-pair full-width">
+            <label for="contestEmail">Email</label>
+            <input type="email" id="contestEmail" name="contestEmail" required>
+          </div>
+          <div class="field-pair full-width">
+            <label for="code">Your Code</label>
+            <textarea id="code" name="code" rows="5" required></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+          </div>
+        </form>
+      </section>
+    </article>
+
+    <aside class="col sidebar">
+      <section class="search-box">
+        <h2>Search My Site</h2>
+        <form id="search-form" action="/search" method="get">
+          <input type="search" name="q" placeholder="Search…" required>
+          <button type="submit">Search</button>
+        </form>
+      </section>
+      <section class="tweet-box">
+        <div class="bg-white p-4 rounded shadow-lg text-center">
+          <h2 class="font-heading text-lg mb-2">Tweet About Us!</h2>
+          <a
+            href="https://twitter.com/share?text=I%20love%20the%20website%20Build%20Electronic%20Projects&url=https%3A%2F%2Fbep.bairminer.com"
+            class="tweet-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Tweet</a>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    © Bairminer – △ ☽ α
+  </footer>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+</body>
+</html>
