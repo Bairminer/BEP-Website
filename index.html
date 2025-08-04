@@ -36,6 +36,17 @@
             <aside class="col sidebar">
             <h2>BEP Visit Counter</h2>
             <div id="view-count">Loading…</div>
+            <script>
+              const path = window.location.pathname;
+              fetch(`https://bep-counter.bairminer.workers.dev${path}`)
+                .then(res => res.json())
+                .then(data => {
+                  document.getElementById('view-count').textContent = `Views: ${data.views}`;
+                })
+                .catch(() => {
+                  document.getElementById('view-count').textContent = 'Views: N/A';
+                });
+            </script>
             </aside>
 
             <article class="col content">
